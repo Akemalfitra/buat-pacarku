@@ -80,15 +80,19 @@
       const notification = document.getElementById('audio-notification');
       const playButton = document.getElementById('play-music-btn');
 
-      // Event listener tombol
-      playButton.addEventListener('click', function() {
+      // Fungsi untuk memutar audio
+      function playAudio() {
         audio.play().then(() => {
           notification.style.display = 'none'; // Sembunyikan notifikasi
         }).catch(err => {
           console.error("Gagal memutar audio: ", err);
           alert("Safari memblokir audio, silakan klik lagi.");
         });
-      });
+      }
+
+      // Event listener untuk klik dan touch di HP
+      playButton.addEventListener('click', playAudio);
+      playButton.addEventListener('touchstart', playAudio);
 
       // Typed.js Animation
       var namakamu = localStorage.getItem('nama') || "sayang";
