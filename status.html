@@ -8,7 +8,11 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+    <!-- Script -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.9"></script>
 
     <title>buat ainii :)</title>
 
@@ -41,7 +45,7 @@
     </style>
   </head>
   <body>
-    <!-- Background Animasi -->
+    <!-- Animation -->
     <div class="anim-bg">
       <ul class="box">
         <li></li>
@@ -53,10 +57,16 @@
       </ul>
     </div>
 
-    <!-- Main Konten -->
+    <!-- Main -->
     <div class="main">
       <span id="jujur"></span>
     </div>
+
+    <!-- Lagu Background (Disembunyikan) -->
+    <audio id="background-music" loop>
+      <source src="assets/Sezairi - It's You.mp3" type="audio/mpeg">
+      Browser Anda tidak mendukung elemen audio.
+    </audio>
 
     <!-- Notifikasi kecil -->
     <div id="audio-notification">
@@ -64,15 +74,8 @@
       <button id="play-music-btn">sayang</button>
     </div>
 
-    <!-- Audio Background -->
-    <audio id="background-music" loop>
-      <source src="assets/Sezairi - It's You.mp3" type="audio/mpeg">
-      Browser Anda tidak mendukung elemen audio.
-    </audio>
-
     <!-- Script -->
     <script>
-      // Init AOS
       AOS.init();
 
       // Ambil elemen audio dan notifikasi
@@ -80,25 +83,17 @@
       const notification = document.getElementById('audio-notification');
       const playButton = document.getElementById('play-music-btn');
 
-      // Fungsi untuk memutar audio
-      function playAudio() {
-        audio.play().then(() => {
-          notification.style.display = 'none'; // Sembunyikan notifikasi
-        }).catch(err => {
-          console.error("Gagal memutar audio: ", err);
-          alert("Safari memblokir audio, silakan klik lagi.");
-        });
-      }
+      // Event listener tombol
+      playButton.addEventListener('click', function() {
+        audio.play(); // Memutar audio
+        notification.style.display = 'none'; // Sembunyikan notifikasi
+      });
 
-      // Event listener untuk klik dan touch di HP
-      playButton.addEventListener('click', playAudio);
-      playButton.addEventListener('touchstart', playAudio);
-
-      // Typed.js Animation
-      var namakamu = localStorage.getItem('nama') || "sayang";
+      // Typed.js animation
+      var namakamu = localStorage.getItem('nama');
       var x = new Typed('#jujur', {
         strings: [
-          'halloo ' + namakamu + '.',
+          'halloo '+namakamu+'.',
           'Makasi ya sayaang kamu udah mau sama aku teruss',
           'Aku sayang sama kamuu',
           'Dari pertama kali kita chattan ',
@@ -119,8 +114,8 @@
       });
     </script>
 
-    <!-- Bootstrap Script -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <!-- Bootstrap Scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
   </body>
 </html>
